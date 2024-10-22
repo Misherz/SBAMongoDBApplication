@@ -143,6 +143,21 @@ export const movies = [
         name: "ParaNorman",
         spookLevel: 3,
         demographic: "family"
+    },
+    {
+        name: "The Nightmare Before Christmas",
+        spookLevel: 2,
+        demographic: "family"
+    },
+    {
+        name: "The Corpse Bride",
+        spookLevel: 2,
+        demographic: "family"
+    },
+    {
+        name: "The Munsters",
+        spookLevel: 3,
+        demographic: "family"
     }
 ]
 
