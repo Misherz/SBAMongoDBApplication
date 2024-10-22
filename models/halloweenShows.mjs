@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
-const halloweenAct = new mongoose.Schema({
+const spookyShows = new mongoose.Schema({
     name:{
         type: String,
         required: true
     },
-    funLevel:{
+    seasons:{
         type: Number,
         required: true
     },
