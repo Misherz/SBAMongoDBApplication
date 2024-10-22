@@ -1,12 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import connectDB from './db/conn.mjs';
+
 
 
 //setup
 const app = express();
 dotenv.config();
-let PORT = process.env.PORT || 3001;
+let PORT = process.env.PORT || 5001;
 
 //DB Connections
 
@@ -15,8 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ extended: true }))
 
 //routes
-app.use('/', spookyRoutes);
-
+app.use('/', characterRoutes);
+app.use('/', halloweenRoutes);
+app.use('/', movieRoutes);
 
 //always comment out before deployment because people can change your database
 //seed goes here
