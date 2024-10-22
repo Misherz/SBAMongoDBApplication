@@ -12,5 +12,8 @@ const spookyMovies = new mongoose.Schema({
     demographic:{
         type: String,
         required: true
-    }
+    },
+    series:{
+        type: Number
+    },
 })
