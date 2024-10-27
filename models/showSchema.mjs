@@ -14,3 +14,9 @@ const spookyShows = new mongoose.Schema({
         required: true
     }
 })
+
+spookyShows.index({name: 1}) //alphabetical
+
+
+export default mongoose.model('Show', spookyShows)
+//collection in DB, referenced in route for 'Song'

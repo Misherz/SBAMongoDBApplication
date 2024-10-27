@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const spookyMovies = new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true
@@ -17,3 +17,9 @@ const spookyMovies = new mongoose.Schema({
         type: Number
     },
 })
+
+movieSchema.index({name: 1}) //alphabetical
+
+
+export default mongoose.model('Movie', movieSchema)
+//collection in DB, referenced in route for 'Movie'

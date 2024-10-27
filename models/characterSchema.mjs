@@ -14,3 +14,9 @@ const spookyCharacters = new mongoose.Schema({
         required: true
     }
 })
+
+spookyCharacters.index({name: 1}) //alphabetical
+
+
+export default mongoose.model('Character', spookyCharacters)
+//collection in DB, referenced in route for 'Character'
