@@ -27,7 +27,7 @@ import SpookyShows from './models/showSchema.mjs'
 //setup
 const app = express();
 dotenv.config();
-let PORT = process.env.PORT || 5001;
+let PORT = process.env.PORT || 3001;
 
 //DB Connections
 connectDB()
@@ -45,47 +45,47 @@ app.use('/movies', movieRoutes);
 //seed goes here
 
 //characters
-// app.get('/seed', async (req, res) => {
-//     //optional
+app.get('/seed/characters', async (req, res) => {
+    //optional
 
-//     await SpookyCharacters.deleteMany({})
+    await SpookyCharacters.deleteMany({});
 
-//     //create items in database
-//     await SpookyCharacters.create(songs)
+    //create items in database
+    await SpookyCharacters.create(characters);
 
-//     res.send('Seeding database')
+    res.send('Seeding database');
 
-// })
+})
 
 
 
 //movies
-// app.get('/seed', async (req, res) => {
-//     //optional
+app.get('/seed/movies', async (req, res) => {
+    //optional
 
-//     await SpookyMovies.deleteMany({})
+    await SpookyMovies.deleteMany({})
 
-//     //create items in database
-//     await SpookyMovies.create(songs)
+    //create items in database
+    await SpookyMovies.create(movies)
 
-//     res.send('Seeding database')
+    res.send('Seeding database')
 
-// })
+})
 
 
 
 //shows
-// app.get('/seed', async (req, res) => {
-//     //optional
+app.get('/seed/shows', async (req, res) => {
+    //optional
 
-//     await SpookyShows.deleteMany({})
+    await SpookyShows.deleteMany({})
 
-//     //create items in database
-//     await SpookyShows.create(songs)
+    //create items in database
+    await SpookyShows.create(show)
 
-//     res.send('Seeding database')
+    res.send('Seeding database')
 
-// })
+})
 
 
 

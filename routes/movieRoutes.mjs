@@ -3,61 +3,82 @@ import Movie from '../models/movieSchema.mjs';
 
 const router = express.Router();
 
-//create
-router.post('/', async (req, res)=>{
-    try {
-        //create variable to cache new movies in
-        const newMovie = new Movie(req.body);
 
-        //save to db and add id to what we will return
+// Create
+router.post('/', async (req, res) => {
+    try {
+
+        let newMovie = new Movie(req.body);
+
         await newMovie.save();
 
-        //send new doc to client
-        res.json(newMovie)
-        
+        res.status(200).json(newMovie);
+
     } catch (err) {
         console.error(err);
-        res.status(500).json({msg: 'Server Error'})
+        res.status(500).json({msg: 'Server error'});
     }
-})
+});
 
-//read
+
+// Read
 router.get('/', async (req, res) => {
     try {
-        const allMovies = await Movie.find({})
 
-        res.json(allMovies)
+        let allMovie = await Movie.find({});
+
+        res.json(allMovie);
+
     } catch (err) {
-        console.error(err)
-        res.status(500).json({ msg: 'Server error' })
+        console.error(err);
+        res.status(500).json({msg: 'Server error'});
     }
-})
+});
 
-//put
-router.put('/:id', async (req, res) => {
+
+// Read by ID
+router.get('/:id', async (req, res) => {
     try {
-        // specify action
+
+        let oneMovie = await Movie.findById(req.params.id);
+
+        res.json(oneMovie);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({msg: 'Server error'});
+    }
+});
+
+
+// Update
+router.patch('/:id', async (req, res) => {
+    try {
+
         let updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
-        //resond to client
         res.json(updatedMovie);
-    } catch (err) {
-        console.error(err)
-        res.status(500).json({ msg: 'Server error' })
-    }
-})
 
-//delete
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({msg: 'Server error'});
+    }
+});
+
+
+// Delete
 router.delete('/:id', async (req, res) => {
     try {
+
         let deletedMovie = await Movie.findByIdAndDelete(req.params.id);
-
+        
         res.json(deletedMovie);
+
     } catch (err) {
-        console.error(err)
-        res.status(500).json({ msg: 'Server error' })
+        console.error(err);
+        res.status(500).json({msg: 'Server error'});
     }
-})
+});
 
 
-export default router
+export default router;
