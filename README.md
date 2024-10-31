@@ -1,4 +1,4 @@
-# SBA Project: 90s-Themed Halloween Blog
+# SBA Project:
 ### Description: 
     DB related to Halloween - using routes, seeding, requests
 
